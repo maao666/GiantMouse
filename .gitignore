@@ -1,0 +1,8 @@
+# Default ignored files
+/workspace.xml
+*.zip
+*.mobi
+*.epub
+*.azw3
+*.pyc
+*.DS_Store
