@@ -22,7 +22,7 @@ def write_to_csv(filename='chp_DB.csv', time_interval=0.5):
     while True:
         try:
             chp_text = get_chp()
-            with open(filename, 'r') as f:
+            with open(filename, 'r', encoding="utf-8") as f:
                 file_content = f.read()
                 total_num = file_content.strip().count('\n')
             if file_content.find(chp_text) == -1:
@@ -32,11 +32,11 @@ def write_to_csv(filename='chp_DB.csv', time_interval=0.5):
                     csv_line[: min(len(csv_line), maximum_logging_string_length)]))
                 logging.info("[{}] Total items: {}".format(
                     datetime.datetime.now(), total_num + 1))
-                with open(filename, 'a') as f:
+                with open(filename, 'a', encoding="utf-8") as f:
                     f.write(csv_line)
             else:
                 logging.info("[{}] Skipping {}...".format(datetime.datetime.now(),
-                    chp_text[:min(len(csv_line), maximum_logging_string_length)]))
+                                                          chp_text[:min(len(chp_text), maximum_logging_string_length)]))
         except Exception:
             traceback.print_exc()
             log = "[{0}] Fetch failed!".format(datetime.datetime.now())
